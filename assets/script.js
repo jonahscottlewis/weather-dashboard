@@ -31,9 +31,13 @@ function getApi() {
             // weatherCard.textContent = [i];
             
            }
+
+           //Making data available to the global scope? Incase needed.
           console.log(data)
           weatherData = data
           console.log(weatherData)
+
+          // adding the value of the current temp to weather div in HTML
           var weather = document.getElementById('weather')
           weather.innerHTML = data.list[0].main.temp + 'F';
           
