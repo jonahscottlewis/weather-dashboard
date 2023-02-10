@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,23 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    <div>
+    <div class="card weatherCard">
         <h4>Weather in your city</h4>
         <br>
- <input class="cityInput" type="text" placeholder="Enter city"></input>
-    <button id="fetch-button">search</button>
-    </div>
 
-    <script src="./script.js"></script>
+        <input class="cityInput" type="text" placeholder="Enter city"></input>
+        <div class="weather">
+
+            <div class="card-body">
+                <button id="fetch-button">search</button>
+                <h3>Current Temperature</h3>
+                <p class="weatherResults" id="weather"></p>
+            </div>
+        </div>
+
+        <script src="./script.js"></script>
 </body>
+
 </html>
