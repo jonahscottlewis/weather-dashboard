@@ -2,6 +2,10 @@ body {
 
 };
 
-.weatherCard {
+
+.card {
+border: solid;
+border-color: black;
+border-width: 5px;
 
 };
