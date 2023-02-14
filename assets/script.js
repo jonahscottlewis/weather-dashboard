@@ -43,10 +43,10 @@ function getApi() {
           //looping through temperature at 12 noon 5 days in a row and getting desired information from data (data.list.length)
           for (i = 2; i < data.list.length; i = i + 8) {
             console.log(data.list[i].main.temp + 'F');
-            //Creating empty array to be filled with current [i]
+            // Creating empty array to be filled with current [i]
             // var weatherDivs = []
-            //Looping through the 5 cards desired(1 for each day's forecast) [Right now is creating a never ending loop]
-            // for (i=0; i< weatherDivs.length; i+5){
+            // Looping through the 5 cards desired(1 for each day's forecast) [Right now is creating a never ending loop]
+            // for (i=2; i< weatherDivs.length; i = i+5){
             // var weatherCard = document.createElement('div');
             // weatherCard.classList.add("weatherCard");
             // weatherCard.textContent = [i]};
@@ -68,6 +68,31 @@ function getApi() {
         })
     });
 };
+
+window.onload = function () {
+  //Check for LocalStorage support
+  if (localStorage) {
+    // Add event listener for form submissions
+    document.getElementById('form').addEventListener('submit', function () {
+      //Get the value of the city search fiels
+      var citySearch = document.getElementById('city-search').value;
+
+      //save the search in LocalStorage
+      localStorage.setItem('city-search', citySearch);
+    });
+  }
+}
+//localStorage.setItem('city[i]', $('#city').val());
+// if (localStorage.getItem("cityInput") != null)
+//    {
+//        var historyTmp = localStorage.getItem("cityInput");
+//        var oldhistoryarray = historyTmp.split('|');
+//        $('#lastResults').empty();
+//        for(var i =0; i<oldhistoryarray.length; i++)
+//        {
+//            $('#lastResults').append('<p>'+oldhistoryarray[i]+'</p>');
+//        }
+//    }
 // event listener for clicking the fetchButton to respond to click to get API
 fetchButton.addEventListener('click', getApi);
 
