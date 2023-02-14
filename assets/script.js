@@ -1,4 +1,12 @@
 var fetchButton = document.getElementById('fetch-button');
+var savedSearches = [];
+if (localStorage.searchHistory) {
+  savedSearches = JSON.parse(localStorage.getItem('searchHistory'))
+}
+else {
+  localStorage.setItem('searchHistory', JSON.stringify(savedSearches))
+};
+
 //Using Jquery to submit form when 'enter' key pressed
 // Wait for document to load
 $(document).ready(() => {
@@ -21,9 +29,10 @@ $('.info').keypress((e) => {
 function getApi() {
   // fetch request gets a list of all 
   var cityInput = document.querySelector('.cityInput').value
-  var requestForecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityInput + '&appid=825001e63987e7b8f9f6d2229d4bda71';
+  var requestForecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityInput + '&units=imperial&appid=825001e63987e7b8f9f6d2229d4bda71';
   // Creating variable for icons URL
   // var requestIconUrl = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityInput +''
+
   //Making sure weatherData is available. (May not be needed)
   var weatherData = null
 
@@ -65,6 +74,8 @@ function getApi() {
           //will need to fetch the api for the cards
           //fetch(requestIconUrl)
 
+          setCity();
+
         })
     });
 };
@@ -83,6 +94,35 @@ window.onload = function () {
   }
 }
 
+function setCity() {
+  //Get the value of the city search fiels
+  var citySearch = document.getElementById('city-search').value;
+
+  //save the search in LocalStorage
+  //localStorage.setItem('searchHistory', citySearch);
+  savedSearches.push(citySearch);
+  localStorage.setItem('searchHistory', savedSearches);
+}
+
+//window.onload = function() {
+
+// Retrieve the users search history.
+// var citySearch = localStorage.getItem('searchHistory');
+
+// for (i=0; i < citySearch.length; i++){
+
+//var historyList = document.getElementbyId('search-history');
+// document.appendChild("li")
+
+// }
+
+//}
+
 // event listener for clicking the fetchButton to respond to click to get API
 fetchButton.addEventListener('click', getApi);
 
+// name of city = data.city.name
+// date = data.list[0].clouds.dt_txt
+// weather conditions = data.list[0].weather[0].description
+// humidity = data.list[0].main.humidity
+// wind speed = data.list[0].wind.speed
