@@ -1,7 +1,7 @@
 var fetchButton = document.getElementById('fetch-button');
 var savedSearches = [];
 if (localStorage.searchHistory) {
- // savedSearches = JSON.parse(localStorage.getItem('searchHistory'))
+  // savedSearches = JSON.parse(localStorage.getItem('searchHistory'))
 }
 else {
   localStorage.setItem('searchHistory', JSON.stringify(savedSearches))
@@ -30,8 +30,6 @@ function getApi() {
   // fetch request gets a list of all 
   var cityInput = document.querySelector('.cityInput').value
   var requestForecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityInput + '&units=imperial&appid=825001e63987e7b8f9f6d2229d4bda71';
-  // Creating variable for icons URL
-  // var requestIconUrl = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityInput +''
 
   //Making sure weatherData is available. (May not be needed)
   var weatherData = null
@@ -43,8 +41,7 @@ function getApi() {
     })
     .then(function (data) {
       console.log(data)
-      var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityInput + '&units=imperial&appid=825001e63987e7b8f9f6d2229d4bda71'
-      fetch(requestUrl)
+      fetch(requestForecastUrl)
         .then(function (response) {
           return response.json();
         })
@@ -71,18 +68,19 @@ function getApi() {
           var city = document.getElementById('city')
           city.innerHTML = data.city.name;
           var date = document.getElementById('date')
-          date.innerHTML = data.list[0].clouds.dt_txt
+          date.innerHTML = data.list[0].dt_txt.split(' ')[0]
           var conditions = document.getElementById('conditions')
-          conditions.innerHTML = data.list[0].weather[0]
+          conditions.innerHTML = data.list[0].weather[0].description
           var temp = document.getElementById('temp')
-          temp.innerHTML = data.list[0].main.temp + ' F'; 
+          temp.innerHTML = data.list[0].main.temp + ' F';
           var humidity = document.getElementById('humidity')
           humidity.innerHTML = data.list[0].main.humidity
           var wind = document.getElementById('wind')
           wind.innerHTML = data.list[0].wind.speed + ' mph';
 
-          
+
           //will need to fetch the api for the cards
+          // var requestIconUrl = 'http://api.openweathermap.org/data/2.5/weather?q= + cityInput + ''
           //fetch(requestIconUrl)
 
           setCity();
@@ -91,20 +89,7 @@ function getApi() {
     });
 };
 
-window.onload = function () {
-  //Check for LocalStorage support
-  if (localStorage) {
-    // Add event listener for form submissions
-    document.getElementById('form').addEventListener('submit', function () {
-      //Get the value of the city search fiels
-      var citySearch = document.getElementById('city-search').value;
-
-      //save the search in LocalStorage
-      localStorage.setItem('city-search', citySearch);
-    });
-  }
-}
-
+// Will erase local storage when page refreshed !! needs to be fixed !!
 function setCity() {
   //Get the value of the city search fiels
   var citySearch = document.getElementById('city-search').value;
@@ -115,10 +100,8 @@ function setCity() {
   localStorage.setItem('searchHistory', savedSearches);
 }
 
-//window.onload = function() {
-
-// Retrieve the users search history.
-// var citySearch = localStorage.getItem('searchHistory');
+// event listener for clicking the fetchButton to respond to click to get API
+fetchButton.addEventListener('click', getApi);
 
 // for (i=0; i < citySearch.length; i++){
 
@@ -128,12 +111,3 @@ function setCity() {
 // }
 
 //}
-
-// event listener for clicking the fetchButton to respond to click to get API
-fetchButton.addEventListener('click', getApi);
-
-// name of city = data.city.name
-// date = data.list[0].clouds.dt_txt
-// weather conditions = data.list[0].weather[0].description
-// humidity = data.list[0].main.humidity
-// wind speed = data.list[0].wind.speed
