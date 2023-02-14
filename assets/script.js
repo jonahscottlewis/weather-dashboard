@@ -82,17 +82,7 @@ window.onload = function () {
     });
   }
 }
-//localStorage.setItem('city[i]', $('#city').val());
-// if (localStorage.getItem("cityInput") != null)
-//    {
-//        var historyTmp = localStorage.getItem("cityInput");
-//        var oldhistoryarray = historyTmp.split('|');
-//        $('#lastResults').empty();
-//        for(var i =0; i<oldhistoryarray.length; i++)
-//        {
-//            $('#lastResults').append('<p>'+oldhistoryarray[i]+'</p>');
-//        }
-//    }
+
 // event listener for clicking the fetchButton to respond to click to get API
 fetchButton.addEventListener('click', getApi);
 
