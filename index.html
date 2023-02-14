@@ -10,17 +10,28 @@
 </head>
 
 <body>
-    <div class="card">
-        <h4>Weather</h4>
-        <ul id="search-history">
-        </ul>
-        <br>
+    <header><h1 class="header">Weather</h1></header>
+
+    <div class="card" >
+
         <form class="info" id="form">
             <input class="cityInput" id="city-search"  type="text" placeholder="Enter city"></input>
             <button type="submit" id="fetch-button">search</button>
-            <h3>Current Temperature</h3>
-            <p class="" id="weather"></p>
+            <h5>City</h5>
+            <p id="city"></p>
+            <h5>Date</h5>
+            <p id="date"></p>
+            <h5>Conditions</h5>
+            <p id="conditions"></p>
+            <h5>Temperature</h5>
+            <p id="temp"></p>
+            <h5>Humidity</h5>
+            <p id="humidity"></p>
+            <h5>Wind Speed</h5>
+            <p id="wind"></p>
         </form>
+        <ul id="search-history">
+        </ul>
 
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"

@@ -1,7 +1,7 @@
 var fetchButton = document.getElementById('fetch-button');
 var savedSearches = [];
 if (localStorage.searchHistory) {
-  savedSearches = JSON.parse(localStorage.getItem('searchHistory'))
+ // savedSearches = JSON.parse(localStorage.getItem('searchHistory'))
 }
 else {
   localStorage.setItem('searchHistory', JSON.stringify(savedSearches))
@@ -68,9 +68,20 @@ function getApi() {
           console.log(weatherData)
 
           // adding the value of the current temp to weather div in HTML
-          var weather = document.getElementById('weather')
-          weather.innerHTML = data.list[0].main.temp + 'F';
+          var city = document.getElementById('city')
+          city.innerHTML = data.city.name;
+          var date = document.getElementById('date')
+          date.innerHTML = data.list[0].clouds.dt_txt
+          var conditions = document.getElementById('conditions')
+          conditions.innerHTML = data.list[0].weather[0]
+          var temp = document.getElementById('temp')
+          temp.innerHTML = data.list[0].main.temp + ' F'; 
+          var humidity = document.getElementById('humidity')
+          humidity.innerHTML = data.list[0].main.humidity
+          var wind = document.getElementById('wind')
+          wind.innerHTML = data.list[0].wind.speed + ' mph';
 
+          
           //will need to fetch the api for the cards
           //fetch(requestIconUrl)
 
