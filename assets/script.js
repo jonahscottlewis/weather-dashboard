@@ -1,10 +1,10 @@
 var fetchButton = document.getElementById('fetch-button');
 var savedSearches = [];
-if (localStorage.searchHistory) {
+if (localStorage.search-history) {
   // savedSearches = JSON.parse(localStorage.getItem('searchHistory'))
 }
 else {
-  localStorage.setItem('searchHistory', JSON.stringify(savedSearches))
+  localStorage.setItem('search-history', JSON.stringify(savedSearches))
 };
 
 //Using Jquery to submit form when 'enter' key pressed
@@ -60,15 +60,15 @@ function getApi() {
           }
 
           //Making data available to the global scope? Incase needed.
-          console.log(data)
+          //console.log(data)
           weatherData = data
-          console.log(weatherData)
+          //console.log(weatherData)
 
           // adding the value of the current temp to weather div in HTML
           var city = document.getElementById('city')
           city.innerHTML = data.city.name;
           var date = document.getElementById('date')
-          date.innerHTML = data.list[0].dt_txt.split(' ')[0]
+          date.innerHTML = data.list[0].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
           var conditions = document.getElementById('conditions')
           conditions.innerHTML = data.list[0].weather[0].description
           var temp = document.getElementById('temp')
@@ -81,6 +81,7 @@ function getApi() {
 
           //will need to fetch the api for the cards
           // var requestIconUrl = 'http://api.openweathermap.org/data/2.5/weather?q= + cityInput + ''
+          // var requestIconUrl = ' http://openweathermap.org/img/wn/10d@2x.png'
           //fetch(requestIconUrl)
 
           setCity();
@@ -97,7 +98,7 @@ function setCity() {
   //save the search in LocalStorage
   //localStorage.setItem('searchHistory', citySearch);
   savedSearches.push(citySearch);
-  localStorage.setItem('searchHistory', savedSearches);
+  localStorage.setItem('search-history', savedSearches);
 }
 
 // event listener for clicking the fetchButton to respond to click to get API
