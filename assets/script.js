@@ -19,6 +19,7 @@ function requestCurrentWeatherApi() {
     .then(function (data) {
       console.log(data)
 
+      var city = document.getElementById('city')
       city.innerHTML = data.city.name;
       var date = document.getElementById('date')
       // use javascript function for date
@@ -61,6 +62,8 @@ function getApi(e) {
           for (i = 2; i < data.list.length; i = i + 8) {
             console.log(data.list[i].main.temp + 'F');
 
+            var city1 = document.getElementById('city-1')
+            city1.textContent = data.city.name;
             var date1 = document.getElementById('date-1')
             date1.textContent = data.list[2].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions = document.getElementById('conditions-1')
@@ -72,6 +75,8 @@ function getApi(e) {
             var wind1 = document.getElementById('wind-1')
             wind1.textContent = data.list[2].wind.speed + ' mph';
 
+            var city2 = document.getElementById('city-2')
+            city2.textContent = data.city.name;
             var date2 = document.getElementById('date-2')
             date2.textContent = data.list[10].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions2 = document.getElementById('conditions-2')
@@ -83,6 +88,8 @@ function getApi(e) {
             var wind2 = document.getElementById('wind-2')
             wind2.textContent = data.list[10].wind.speed + ' mph';
 
+            var city3 = document.getElementById('city-3')
+            city3.textContent = data.city.name;
             var date3 = document.getElementById('date-3')
             date3.textContent = data.list[18].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions3 = document.getElementById('conditions-3')
@@ -94,6 +101,8 @@ function getApi(e) {
             var wind3 = document.getElementById('wind-3')
             wind3.textContent = data.list[18].wind.speed + ' mph';
 
+            var city4 = document.getElementById('city-4')
+            city4.textContent = data.city.name;
             var date4 = document.getElementById('date-4')
             date4.textContent = data.list[26].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions4 = document.getElementById('conditions-4')
@@ -105,6 +114,8 @@ function getApi(e) {
             var wind4 = document.getElementById('wind-4')
             wind4.textContent = data.list[26].wind.speed + ' mph';
 
+            var city5 = document.getElementById('city-5')
+            city5.textContent = data.city.name;
             var date5 = document.getElementById('date-5')
             date5.textContent = data.list[34].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions5 = document.getElementById('conditions-2')
@@ -164,7 +175,6 @@ function setCity() {
 fetchButton.addEventListener('submit', getApi);
 fetchButton.addEventListener('keyup', function(e){
 e.preventDefault()
-  console.log(e.key)
   // Enter key corresponds to number 13
   if (e.key === 'Enter') {
   }
