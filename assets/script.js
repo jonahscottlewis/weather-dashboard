@@ -1,11 +1,11 @@
 var fetchButton = document.getElementById('form');
 var savedSearches = JSON.parse(localStorage.getItem('search-history')) || [];
 var dateObj = new Date();
-var month = dateObj.getUTCMonth() +1; //months from 1-12
+var month = dateObj.getUTCMonth() + 1; //months from 1-12
 var day = dateObj.getUTCDate();
 var year = dateObj.getUTCFullYear();
 
-var newdate = month + "/" + day + "/" + year ;
+var newdate = month + "/" + day + "/" + year;
 
 // requesting URL for current day because 5 day forecast starts 1 day forward
 function getCurrentWeatherApi(e) {
@@ -119,20 +119,20 @@ function getApi(e) {
             city5.textContent = data.city.name;
             var date5 = document.getElementById('date-5')
             date5.textContent = data.list[34].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
-            var conditions5 = document.getElementById('conditions-2')
+            var conditions5 = document.getElementById('conditions-5')
             conditions5.textContent = data.list[34].weather[0].description
             var temp5 = document.getElementById('temp-5')
             temp5.textContent = data.list[34].main.temp + ' F';
             var humidity5 = document.getElementById('humidity-5')
             humidity5.textContent = data.list[34].main.humidity + '%';
-            var wind5 = document.getElementById('wind-2')
+            var wind5 = document.getElementById('wind-5')
             wind5.textContent = data.list[34].wind.speed + ' mph';
 
           }
 
           //Making data available to the global scope? Incase needed.
           //console.log(data)
-          weatherData = data
+          //weatherData = data
           //console.log(weatherData)
 
           //will need to fetch the api for the cards
@@ -147,9 +147,8 @@ function getApi(e) {
 };
 
 function setCity() {
-  //Get the value of the city search fiels
+  //Get the value of the city search field
   var citySearch = document.getElementById('city-search').value;
-
   savedSearches.push(citySearch);
   localStorage.setItem('search-history', JSON.stringify(savedSearches));
 }
@@ -157,9 +156,9 @@ function setCity() {
 // event listener for clicking the fetchButton to respond to click to get API
 fetchButton.addEventListener('submit', getApi);
 // Event liatener to submit form when enter key pressed
-fetchButton.addEventListener('submit',getCurrentWeatherApi);
-fetchButton.addEventListener('keyup', function(e){
-e.preventDefault()
+fetchButton.addEventListener('submit', getCurrentWeatherApi);
+fetchButton.addEventListener('keyup', function (e) {
+  e.preventDefault()
   // Enter key corresponds to number 13
   if (e.key === 'Enter') {
   }
