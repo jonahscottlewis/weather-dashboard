@@ -1,7 +1,7 @@
 var fetchButton = document.getElementById('form');
 var savedSearches = JSON.parse(localStorage.getItem('search-history')) || [];
 var dateObj = new Date();
-var month = dateObj.getUTCMonth() + 1; //months from 1-12
+var month = dateObj.getUTCMonth(); //months from 1-12
 var day = dateObj.getUTCDate();
 var year = dateObj.getUTCFullYear();
 
@@ -24,13 +24,13 @@ function requestCurrentWeatherApi() {
       // use javascript function for date
       date.textContent = newdate //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
       var conditions = document.getElementById('conditions')
-      conditions.innerHTML = data.list[2].weather[0].description
+      conditions.textContent = data.list[2].weather[0].description
       var temp = document.getElementById('temp')
-      temp.innerHTML = data.main.temp + ' F';
+      temp.textContent = data.main.temp + ' F';
       var humidity = document.getElementById('humidity')
-      humidity.innerHTML = data.main.humidity
+      humidity.textContent = data.main.humidity
       var wind = document.getElementById('wind')
-      wind.innerHTML = data.wind.speed + ' mph'
+      wind.textContent = data.wind.speed + ' mph'
 
     })
 }
@@ -62,67 +62,59 @@ function getApi(e) {
             console.log(data.list[i].main.temp + 'F');
 
             var date1 = document.getElementById('date-1')
-            date1.innerHTML = data.list[2].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
+            date1.textContent = data.list[2].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions = document.getElementById('conditions-1')
-            conditions.innerHTML = data.list[2].weather[0].description
+            conditions.textContent = data.list[2].weather[0].description
             var temp1 = document.getElementById('temp-1')
-            temp1.innerHTML = data.list[2].main.temp + ' F';
+            temp1.textContent = data.list[2].main.temp + ' F';
             var humidity1 = document.getElementById('humidity-1')
-            humidity1.innerHTML = data.list[2].main.humidity
+            humidity1.textContent = data.list[2].main.humidity + '%';
             var wind1 = document.getElementById('wind-1')
-            wind1.innerHTML = data.list[2].wind.speed + ' mph';
+            wind1.textContent = data.list[2].wind.speed + ' mph';
 
             var date2 = document.getElementById('date-2')
-            date2.innerHTML = data.list[10].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
+            date2.textContent = data.list[10].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions2 = document.getElementById('conditions-2')
-            conditions2.innerHTML = data.list[10].weather[0].description
+            conditions2.textContent = data.list[10].weather[0].description
             var temp2 = document.getElementById('temp-2')
-            temp2.innerHTML = data.list[10].main.temp + ' F';
+            temp2.textContent = data.list[10].main.temp + ' F';
             var humidity2 = document.getElementById('humidity-2')
-            humidity2.innerHTML = data.list[10].main.humidity
+            humidity2.textContent = data.list[10].main.humidity + '%';
             var wind2 = document.getElementById('wind-2')
-            wind2.innerHTML = data.list[10].wind.speed + ' mph';
+            wind2.textContent = data.list[10].wind.speed + ' mph';
 
             var date3 = document.getElementById('date-3')
-            date3.innerHTML = data.list[18].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
+            date3.textContent = data.list[18].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions3 = document.getElementById('conditions-3')
-            conditions3.innerHTML = data.list[18].weather[0].description
+            conditions3.textContent = data.list[18].weather[0].description
             var temp3 = document.getElementById('temp-3')
-            temp3.innerHTML = data.list[18].main.temp + ' F';
+            temp3.textContent = data.list[18].main.temp + ' F';
             var humidity3 = document.getElementById('humidity-3')
-            humidity3.innerHTML = data.list[18].main.humidity
+            humidity3.textContent = data.list[18].main.humidity + '%';
             var wind3 = document.getElementById('wind-3')
-            wind3.innerHTML = data.list[18].wind.speed + ' mph';
+            wind3.textContent = data.list[18].wind.speed + ' mph';
 
             var date4 = document.getElementById('date-4')
-            date4.innerHTML = data.list[26].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
+            date4.textContent = data.list[26].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions4 = document.getElementById('conditions-4')
-            conditions4.innerHTML = data.list[26].weather[0].description
+            conditions4.textContent = data.list[26].weather[0].description
             var temp4 = document.getElementById('temp-4')
-            temp4.innerHTML = data.list[26].main.temp + ' F';
+            temp4.textContent = data.list[26].main.temp + ' F';
             var humidity4 = document.getElementById('humidity-4')
-            humidity4.innerHTML = data.list[26].main.humidity
+            humidity4.textContent = data.list[26].main.humidity + '%';
             var wind4 = document.getElementById('wind-4')
-            wind4.innerHTML = data.list[26].wind.speed + ' mph';
+            wind4.textContent = data.list[26].wind.speed + ' mph';
 
             var date5 = document.getElementById('date-5')
-            date5.innerHTML = data.list[34].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
+            date5.textContent = data.list[34].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions5 = document.getElementById('conditions-2')
-            conditions5.innerHTML = data.list[34].weather[0].description
+            conditions5.textContent = data.list[34].weather[0].description
             var temp5 = document.getElementById('temp-5')
-            temp5.innerHTML = data.list[34].main.temp + ' F';
+            temp5.textContent = data.list[34].main.temp + ' F';
             var humidity5 = document.getElementById('humidity-5')
-            humidity5.innerHTML = data.list[34].main.humidity
+            humidity5.textContent = data.list[34].main.humidity + '%';
             var wind5 = document.getElementById('wind-2')
-            wind5.innerHTML = data.list[34].wind.speed + ' mph';
-
-            // Creating empty array to be filled with current [i]
-            // var weatherDivs = []
-            // Looping through the 5 cards desired(1 for each day's forecast) [Right now is creating a never ending loop]
-            // for (i=2; i< weatherDivs.length; i = i+5){
-            // var weatherCard = document.createElement('div');
-            // weatherCard.classList.add("weatherCard");
-            // weatherCard.textContent = [i]};
+            wind5.textContent = data.list[34].wind.speed + ' mph';
 
           }
 
@@ -178,11 +170,3 @@ e.preventDefault()
   }
 })
 
-// for (i=0; i < citySearch.length; i++){
-
-//var historyList = document.getElementbyId('search-history');
-// document.appendChild("li")
-
-// }
-
-//}
