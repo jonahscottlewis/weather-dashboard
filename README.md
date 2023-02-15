@@ -1,25 +1,12 @@
 # Weather Dashboard
 
-
-
 ## User Story
 
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
-```
+AS A user
+I WANT to search a desired city and know the current weather and the weather for the next five days
+SO THAT I can make plans according to what kind of weather will occur
 
-## Acceptance Criteria
 
-```
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-```
+# Description
+
+The user types their city into the search bar and will be presented with the weather results for the current day and the next five days after that. This application uses the Openweather API. The following data will display: city name, date, cloud description, temperature, humidity and wind speed.

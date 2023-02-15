@@ -1,31 +1,33 @@
 var fetchButton = document.getElementById('form');
 var savedSearches = JSON.parse(localStorage.getItem('search-history')) || [];
 var dateObj = new Date();
-var month = dateObj.getUTCMonth(); //months from 1-12
+var month = dateObj.getUTCMonth() +1; //months from 1-12
 var day = dateObj.getUTCDate();
 var year = dateObj.getUTCFullYear();
 
 var newdate = month + "/" + day + "/" + year ;
 
 // requesting URL for current day because 5 day forecast starts 1 day forward
-function requestCurrentWeatherApi() {
+function getCurrentWeatherApi(e) {
+  e.preventDefault()
   var cityInput = document.querySelector('.cityInput').value
-  var requestCurrentWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityInput + '&units=imperial&appid=825001e63987e7b8f9f6d2229d4bda71';
+  var getCurrentWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityInput + '&units=imperial&appid=825001e63987e7b8f9f6d2229d4bda71';
 
-  fetch(requestCurrentWeatherUrl)
+  fetch(getCurrentWeatherUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       console.log(data)
 
+      //current day not working
       var city = document.getElementById('city')
-      city.innerHTML = data.city.name;
+      city.textContent = data.name;
       var date = document.getElementById('date')
       // use javascript function for date
       date.textContent = newdate //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
       var conditions = document.getElementById('conditions')
-      conditions.textContent = data.list[2].weather[0].description
+      conditions.textContent = data.weather[0].description
       var temp = document.getElementById('temp')
       temp.textContent = data.main.temp + ' F';
       var humidity = document.getElementById('humidity')
@@ -35,7 +37,6 @@ function requestCurrentWeatherApi() {
 
     })
 }
-
 
 function getApi(e) {
   e.preventDefault()
@@ -134,21 +135,6 @@ function getApi(e) {
           weatherData = data
           //console.log(weatherData)
 
-          // adding the value of the current temp to weather div in HTML
-          var city = document.getElementById('city')
-          city.innerHTML = data.city.name;
-          var date = document.getElementById('date')
-          date.innerHTML = data.list[0].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
-          var conditions = document.getElementById('conditions')
-          conditions.innerHTML = data.list[0].weather[0].description
-          var temp = document.getElementById('temp')
-          temp.innerHTML = data.list[0].main.temp + ' F';
-          var humidity = document.getElementById('humidity')
-          humidity.innerHTML = data.list[0].main.humidity
-          var wind = document.getElementById('wind')
-          wind.innerHTML = data.list[0].wind.speed + ' mph';
-
-
           //will need to fetch the api for the cards
           // var requestIconUrl = 'http://api.openweathermap.org/data/2.5/weather?q= + cityInput + ''
           // var requestIconUrl = ' http://openweathermap.org/img/wn/10d@2x.png'
@@ -160,23 +146,21 @@ function getApi(e) {
     });
 };
 
-// Will erase local storage when page refreshed !! needs to be fixed !!
 function setCity() {
   //Get the value of the city search fiels
   var citySearch = document.getElementById('city-search').value;
 
-  //save the search in LocalStorage
-  //localStorage.setItem('searchHistory', citySearch);
   savedSearches.push(citySearch);
   localStorage.setItem('search-history', JSON.stringify(savedSearches));
 }
 
 // event listener for clicking the fetchButton to respond to click to get API
 fetchButton.addEventListener('submit', getApi);
+// Event liatener to submit form when enter key pressed
+fetchButton.addEventListener('submit',getCurrentWeatherApi);
 fetchButton.addEventListener('keyup', function(e){
 e.preventDefault()
   // Enter key corresponds to number 13
   if (e.key === 'Enter') {
   }
 })
-
