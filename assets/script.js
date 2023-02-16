@@ -1,11 +1,8 @@
 var fetchButton = document.getElementById('form');
 var savedSearches = JSON.parse(localStorage.getItem('search-history')) || [];
-var dateObj = new Date();
-var month = dateObj.getUTCMonth() + 1; //months from 1-12
-var day = dateObj.getUTCDate();
-var year = dateObj.getUTCFullYear();
 
-var newdate = month + "/" + day + "/" + year;
+
+var newDate = dayjs().format('MMMM D, YYYY');
 
 // requesting URL for current day because 5 day forecast starts 1 day forward
 function getCurrentWeatherApi(e) {
@@ -20,12 +17,14 @@ function getCurrentWeatherApi(e) {
     .then(function (data) {
       console.log(data)
 
+
+      
       //current day not working
       var city = document.getElementById('city')
       city.textContent = data.name;
       var date = document.getElementById('date')
       // use javascript function for date
-      date.textContent = newdate //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
+      date.textContent = newDate //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
       var conditions = document.getElementById('conditions')
       conditions.textContent = data.weather[0].description
       var temp = document.getElementById('temp')
