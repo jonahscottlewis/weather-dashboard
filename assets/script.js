@@ -1,7 +1,6 @@
 var fetchButton = document.getElementById('form');
+var searchList = document.getElementById('last-five');
 var savedSearches = JSON.parse(localStorage.getItem('search-history')) || [];
-
-
 var newDate = dayjs().format('MMMM D, YYYY');
 
 // requesting URL for current day because 5 day forecast starts 1 day forward
@@ -18,7 +17,7 @@ function getCurrentWeatherApi(e) {
       console.log(data)
 
 
-      
+
       //current day not working
       var city = document.getElementById('city')
       city.textContent = data.name;
@@ -44,7 +43,7 @@ function getApi(e) {
   var requestForecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityInput + '&units=imperial&appid=825001e63987e7b8f9f6d2229d4bda71';
 
   //Making sure weatherData is available. (May not be needed)
-  var weatherData = null
+  // var weatherData = null
 
   //Getting access to API 
   fetch(requestForecastUrl)
@@ -152,6 +151,27 @@ function setCity() {
   localStorage.setItem('search-history', JSON.stringify(savedSearches));
 }
 
+
+function displayHistory() {
+  searchList.innerHTML = "";
+  // recent searches list
+  if (localStorage.getItem('search-history')) {
+    console.log(savedSearches)
+    //savedSearches = JSON.parse(localStorage.getItem('search-history'));
+    //localStorage.setItem('search-history', JSON.stringify(savedSearches));
+    for (var i = savedSearches.length < 5 ? 0 : savedSearches.length - 5; i < savedSearches.length; i++) {
+      var searches = document.createElement('a');
+      searches.innerHTML = savedSearches[i];
+      searches.addEventListener(onload, function (event) {
+        //var savedSearches = document.getElementById('city-search')
+        savedSearches.value = event.target.textContent;
+      })
+      searchList.append(searches)
+    }
+  }
+} displayHistory()
+
+
 // event listener for clicking the fetchButton to respond to click to get API
 fetchButton.addEventListener('submit', getApi);
 // Event liatener to submit form when enter key pressed
@@ -162,3 +182,4 @@ fetchButton.addEventListener('keyup', function (e) {
   if (e.key === 'Enter') {
   }
 })
+

@@ -19,6 +19,11 @@ body {
     min-height: 100vh;
 }
 
+#last-five{
+    display: flex;
+    flex-direction: column;
+
+}
 
 .current-day {
     color: aliceblue;
@@ -27,6 +32,7 @@ body {
 
 
 }
+
 
 .five-day-header {
     color: aliceblue;
