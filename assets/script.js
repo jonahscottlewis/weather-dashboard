@@ -128,6 +128,9 @@ function getApi(e) {
 
           }
 
+
+
+
           //Making data available to the global scope? Incase needed.
           //console.log(data)
           //weatherData = data
@@ -137,6 +140,9 @@ function getApi(e) {
           // var requestIconUrl = 'http://api.openweathermap.org/data/2.5/weather?q= + cityInput + ''
           // var requestIconUrl = ' http://openweathermap.org/img/wn/10d@2x.png'
           //fetch(requestIconUrl)
+
+
+
 
           setCity();
 
@@ -161,6 +167,9 @@ function displayHistory() {
     //localStorage.setItem('search-history', JSON.stringify(savedSearches));
     for (var i = savedSearches.length < 5 ? 0 : savedSearches.length - 5; i < savedSearches.length; i++) {
       var searches = document.createElement('a');
+      // giving class so can be grabbed with querySelector and used in searchRecent function below
+      //searches.classList.add('searched');
+      //searches.addAttribute('href');
       searches.innerHTML = savedSearches[i];
       searches.addEventListener(onload, function (event) {
         //var savedSearches = document.getElementById('city-search')
@@ -174,6 +183,15 @@ function displayHistory() {
 
 // event listener for clicking the fetchButton to respond to click to get API
 fetchButton.addEventListener('submit', getApi);
+
+// trying to trigger search when user clicks on a city from their recent history
+// var searches = document.querySelector('searched')
+// function searchRecent () {
+//   searchHistory.value = event.target.textContent;
+//}
+//searches.addEventListener('click', searchRecent)
+
+
 // Event liatener to submit form when enter key pressed
 fetchButton.addEventListener('submit', getCurrentWeatherApi);
 fetchButton.addEventListener('keyup', function (e) {
@@ -182,4 +200,3 @@ fetchButton.addEventListener('keyup', function (e) {
   if (e.key === 'Enter') {
   }
 })
-
