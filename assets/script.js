@@ -1,3 +1,9 @@
+// use this example to add icons to weather cards
+// const weatherImg = document.querySelector("#weather-img");
+// const icon = // Whatever the data path for the icon code is
+// weatherImg.src = `https://openweathermap.org/img/wn/${icon}@2x.png`
+
+
 var fetchButton = document.getElementById('form');
 var searchList = document.getElementById('last-five');
 var savedSearches = JSON.parse(localStorage.getItem('search-history')) || [];
@@ -32,6 +38,8 @@ function getCurrentWeatherApi(e) {
       humidity.textContent = data.main.humidity
       var wind = document.getElementById('wind')
       wind.textContent = data.wind.speed + ' mph'
+     // var icon1 = document.getElementById('icon-1');
+     // icon1.
 
     })
 }
@@ -73,6 +81,8 @@ function getApi(e) {
             humidity1.textContent = data.list[2].main.humidity + '%';
             var wind1 = document.getElementById('wind-1')
             wind1.textContent = data.list[2].wind.speed + ' mph';
+            //var icon2 = document.getElementById('icon-2');
+            //icon2. = data. ;
 
             var city2 = document.getElementById('city-2')
             city2.textContent = data.city.name;
@@ -86,6 +96,8 @@ function getApi(e) {
             humidity2.textContent = data.list[10].main.humidity + '%';
             var wind2 = document.getElementById('wind-2')
             wind2.textContent = data.list[10].wind.speed + ' mph';
+            //var icon3 = document.getElementById('icon-3');
+           // icon3. = data. ;
 
             var city3 = document.getElementById('city-3')
             city3.textContent = data.city.name;
@@ -99,6 +111,8 @@ function getApi(e) {
             humidity3.textContent = data.list[18].main.humidity + '%';
             var wind3 = document.getElementById('wind-3')
             wind3.textContent = data.list[18].wind.speed + ' mph';
+            //var icon4 = document.getElementById('icon-4');
+            //icon4. = data. ;
 
             var city4 = document.getElementById('city-4')
             city4.textContent = data.city.name;
@@ -112,6 +126,8 @@ function getApi(e) {
             humidity4.textContent = data.list[26].main.humidity + '%';
             var wind4 = document.getElementById('wind-4')
             wind4.textContent = data.list[26].wind.speed + ' mph';
+            //var icon5 = document.getElementById('icon-5');
+            //icon5. = data. ;
 
             var city5 = document.getElementById('city-5')
             city5.textContent = data.city.name;
@@ -125,6 +141,8 @@ function getApi(e) {
             humidity5.textContent = data.list[34].main.humidity + '%';
             var wind5 = document.getElementById('wind-5')
             wind5.textContent = data.list[34].wind.speed + ' mph';
+            //var icon6 = document.getElementById('icon-6');
+            //icon6. = data. ;
 
           }
 
@@ -150,6 +168,8 @@ function getApi(e) {
     });
 };
 
+
+
 function setCity() {
   //Get the value of the city search field
   var citySearch = document.getElementById('city-search').value;
@@ -162,7 +182,7 @@ function displayHistory() {
   searchList.innerHTML = "";
   // recent searches list
   if (localStorage.getItem('search-history')) {
-    console.log(savedSearches)
+    // console.log(savedSearches)
     //savedSearches = JSON.parse(localStorage.getItem('search-history'));
     //localStorage.setItem('search-history', JSON.stringify(savedSearches));
     for (var i = savedSearches.length < 5 ? 0 : savedSearches.length - 5; i < savedSearches.length; i++) {
