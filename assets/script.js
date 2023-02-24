@@ -27,6 +27,8 @@ function getCurrentWeatherApi(e) {
       //current day not working
       var city = document.getElementById('city')
       city.textContent = data.name;
+      var icon = document.getElementById('icon')
+      icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
       var date = document.getElementById('date')
       // use javascript function for date
       date.textContent = newDate //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
@@ -38,8 +40,7 @@ function getCurrentWeatherApi(e) {
       humidity.textContent = data.main.humidity
       var wind = document.getElementById('wind')
       wind.textContent = data.wind.speed + ' mph'
-     // var icon1 = document.getElementById('icon-1');
-     // icon1.
+    
 
     })
 }
@@ -71,6 +72,8 @@ function getApi(e) {
 
             var city1 = document.getElementById('city-1')
             city1.textContent = data.city.name;
+            //var icon1 = document.getElementById('icon-1')
+            //icon1.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
             var date1 = document.getElementById('date-1')
             date1.textContent = data.list[2].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions = document.getElementById('conditions-1')
@@ -81,11 +84,11 @@ function getApi(e) {
             humidity1.textContent = data.list[2].main.humidity + '%';
             var wind1 = document.getElementById('wind-1')
             wind1.textContent = data.list[2].wind.speed + ' mph';
-            //var icon2 = document.getElementById('icon-2');
-            //icon2. = data. ;
-
+           
             var city2 = document.getElementById('city-2')
             city2.textContent = data.city.name;
+            var icon2 = document.getElementById('icon-2')
+            icon2.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
             var date2 = document.getElementById('date-2')
             date2.textContent = data.list[10].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions2 = document.getElementById('conditions-2')
@@ -96,11 +99,11 @@ function getApi(e) {
             humidity2.textContent = data.list[10].main.humidity + '%';
             var wind2 = document.getElementById('wind-2')
             wind2.textContent = data.list[10].wind.speed + ' mph';
-            //var icon3 = document.getElementById('icon-3');
-           // icon3. = data. ;
 
             var city3 = document.getElementById('city-3')
             city3.textContent = data.city.name;
+            var icon3 = document.getElementById('icon-3')
+            icon3.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
             var date3 = document.getElementById('date-3')
             date3.textContent = data.list[18].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions3 = document.getElementById('conditions-3')
@@ -111,11 +114,11 @@ function getApi(e) {
             humidity3.textContent = data.list[18].main.humidity + '%';
             var wind3 = document.getElementById('wind-3')
             wind3.textContent = data.list[18].wind.speed + ' mph';
-            //var icon4 = document.getElementById('icon-4');
-            //icon4. = data. ;
-
+            
             var city4 = document.getElementById('city-4')
             city4.textContent = data.city.name;
+            var icon4 = document.getElementById('icon-4')
+            icon4.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
             var date4 = document.getElementById('date-4')
             date4.textContent = data.list[26].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions4 = document.getElementById('conditions-4')
@@ -131,6 +134,8 @@ function getApi(e) {
 
             var city5 = document.getElementById('city-5')
             city5.textContent = data.city.name;
+            var icon5 = document.getElementById('icon-5')
+            icon5.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
             var date5 = document.getElementById('date-5')
             date5.textContent = data.list[34].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions5 = document.getElementById('conditions-5')
