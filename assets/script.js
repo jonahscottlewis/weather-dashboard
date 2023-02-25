@@ -1,9 +1,3 @@
-// use this example to add icons to weather cards
-// const weatherImg = document.querySelector("#weather-img");
-// const icon = // Whatever the data path for the icon code is
-// weatherImg.src = `https://openweathermap.org/img/wn/${icon}@2x.png`
-
-
 var fetchButton = document.getElementById('form');
 var searchList = document.getElementById('last-five');
 var savedSearches = JSON.parse(localStorage.getItem('search-history')) || [];
@@ -22,8 +16,6 @@ function getCurrentWeatherApi(e) {
     .then(function (data) {
       console.log(data)
 
-
-
       //current day not working
       var city = document.getElementById('city')
       city.textContent = data.name;
@@ -41,18 +33,15 @@ function getCurrentWeatherApi(e) {
       var wind = document.getElementById('wind')
       wind.textContent = data.wind.speed + ' mph'
     
-
     })
 }
 
 function getApi(e) {
   e.preventDefault()
+  
   // fetch request gets a list of all 
   var cityInput = document.querySelector('.cityInput').value
   var requestForecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityInput + '&units=imperial&appid=825001e63987e7b8f9f6d2229d4bda71';
-
-  //Making sure weatherData is available. (May not be needed)
-  // var weatherData = null
 
   //Getting access to API 
   fetch(requestForecastUrl)
@@ -72,8 +61,8 @@ function getApi(e) {
 
             var city1 = document.getElementById('city-1')
             city1.textContent = data.city.name;
-            //var icon1 = document.getElementById('icon-1')
-            //icon1.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+            var icon1 = document.getElementById('icon-1')
+            icon1.src = `https://openweathermap.org/img/wn/${data.list[2].weather[0].icon}@2x.png`
             var date1 = document.getElementById('date-1')
             date1.textContent = data.list[2].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions = document.getElementById('conditions-1')
@@ -88,7 +77,7 @@ function getApi(e) {
             var city2 = document.getElementById('city-2')
             city2.textContent = data.city.name;
             var icon2 = document.getElementById('icon-2')
-            icon2.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+            icon2.src = `https://openweathermap.org/img/wn/${data.list[10].weather[0].icon}@2x.png`
             var date2 = document.getElementById('date-2')
             date2.textContent = data.list[10].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions2 = document.getElementById('conditions-2')
@@ -103,7 +92,7 @@ function getApi(e) {
             var city3 = document.getElementById('city-3')
             city3.textContent = data.city.name;
             var icon3 = document.getElementById('icon-3')
-            icon3.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+            icon3.src = `https://openweathermap.org/img/wn/${data.list[18].weather[0].icon}@2x.png`
             var date3 = document.getElementById('date-3')
             date3.textContent = data.list[18].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions3 = document.getElementById('conditions-3')
@@ -118,7 +107,7 @@ function getApi(e) {
             var city4 = document.getElementById('city-4')
             city4.textContent = data.city.name;
             var icon4 = document.getElementById('icon-4')
-            icon4.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+            icon4.src = `https://openweathermap.org/img/wn/${data.list[26].weather[0].icon}@2x.png`
             var date4 = document.getElementById('date-4')
             date4.textContent = data.list[26].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions4 = document.getElementById('conditions-4')
@@ -129,13 +118,11 @@ function getApi(e) {
             humidity4.textContent = data.list[26].main.humidity + '%';
             var wind4 = document.getElementById('wind-4')
             wind4.textContent = data.list[26].wind.speed + ' mph';
-            //var icon5 = document.getElementById('icon-5');
-            //icon5. = data. ;
-
+            
             var city5 = document.getElementById('city-5')
             city5.textContent = data.city.name;
             var icon5 = document.getElementById('icon-5')
-            icon5.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+            icon5.src = `https://openweathermap.org/img/wn/${data.list[34].weather[0].icon}@2x.png`
             var date5 = document.getElementById('date-5')
             date5.textContent = data.list[34].dt_txt.split(' ')[0] //!! NEEDS TO BE REFORMATED TO MM/DD/YYYY !!
             var conditions5 = document.getElementById('conditions-5')
@@ -146,34 +133,14 @@ function getApi(e) {
             humidity5.textContent = data.list[34].main.humidity + '%';
             var wind5 = document.getElementById('wind-5')
             wind5.textContent = data.list[34].wind.speed + ' mph';
-            //var icon6 = document.getElementById('icon-6');
-            //icon6. = data. ;
-
+            
           }
 
-
-
-
-          //Making data available to the global scope? Incase needed.
-          //console.log(data)
-          //weatherData = data
-          //console.log(weatherData)
-
-          //will need to fetch the api for the cards
-          // var requestIconUrl = 'http://api.openweathermap.org/data/2.5/weather?q= + cityInput + ''
-          // var requestIconUrl = ' http://openweathermap.org/img/wn/10d@2x.png'
-          //fetch(requestIconUrl)
-
-
-
-
           setCity();
-
+          
         })
     });
 };
-
-
 
 function setCity() {
   //Get the value of the city search field
@@ -182,22 +149,16 @@ function setCity() {
   localStorage.setItem('search-history', JSON.stringify(savedSearches));
 }
 
-
 function displayHistory() {
   searchList.innerHTML = "";
   // recent searches list
   if (localStorage.getItem('search-history')) {
-    // console.log(savedSearches)
-    //savedSearches = JSON.parse(localStorage.getItem('search-history'));
-    //localStorage.setItem('search-history', JSON.stringify(savedSearches));
     for (var i = savedSearches.length < 5 ? 0 : savedSearches.length - 5; i < savedSearches.length; i++) {
       var searches = document.createElement('a');
       // giving class so can be grabbed with querySelector and used in searchRecent function below
-      //searches.classList.add('searched');
-      //searches.addAttribute('href');
+      
       searches.innerHTML = savedSearches[i];
       searches.addEventListener(onload, function (event) {
-        //var savedSearches = document.getElementById('city-search')
         savedSearches.value = event.target.textContent;
       })
       searchList.append(searches)
@@ -205,23 +166,13 @@ function displayHistory() {
   }
 } displayHistory()
 
-
 // event listener for clicking the fetchButton to respond to click to get API
 fetchButton.addEventListener('submit', getApi);
-
-// trying to trigger search when user clicks on a city from their recent history
-// var searches = document.querySelector('searched')
-// function searchRecent () {
-//   searchHistory.value = event.target.textContent;
-//}
-//searches.addEventListener('click', searchRecent)
-
 
 // Event liatener to submit form when enter key pressed
 fetchButton.addEventListener('submit', getCurrentWeatherApi);
 fetchButton.addEventListener('keyup', function (e) {
   e.preventDefault()
-  // Enter key corresponds to number 13
   if (e.key === 'Enter') {
   }
 })
