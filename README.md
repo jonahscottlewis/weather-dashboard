@@ -11,7 +11,8 @@ SO THAT I can make plans according to what kind of weather will occur
 
 The user types their city into the search bar and will be presented with the weather results for the current day and the next five days after that. This application uses the Openweather API. The following data will display: city name, date, cloud description, temperature, humidity and wind speed.
 
-## Deployed URL
+## GitHub URL
+https://github.com/jonahscottlewis/weather-dashboard-6
 https://jonahscottlewis.github.io/weather-dashboard-6/
 
 [alt text](./assets/Weather%20Dashboard-(1).png)
