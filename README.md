@@ -15,5 +15,5 @@ The user types their city into the search bar and will be presented with the wea
 https://github.com/jonahscottlewis/weather-dashboard-6
 https://jonahscottlewis.github.io/weather-dashboard-6/
 
-[alt text](./assets/Weather%20Dashboard-(1).png)
-[alt text](./assets/Weather%20Dashboard%20(2).png)
+[alt text](./assets/Weather%20Dashboard%20screenshot(1).png)
+[alt text](./assets/Weather%20Dashboard%20screenshot(2).png)

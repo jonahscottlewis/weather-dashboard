@@ -10,14 +10,17 @@
 }
 
 
-html, 
+ 
 body {
 
     display: flex;
     flex-direction: column;
+    margin: 0 90px 0 150px;
     background-image: linear-gradient(to bottom left, rgb(98, 100, 98), rgb(35, 34, 34));
     min-height: 100vh;
 }
+
+
 
 #last-five{
     display: flex;
@@ -57,15 +60,6 @@ body {
 
 }
 
-footer {
-    
-    text-align: center;
-    color: aliceblue;
-    background-image: linear-gradient(to bottom left, rgb(98, 100, 98), rgb(35, 34, 34));
-    margin-top: auto;
-    
-    
-}
 
 /* Add some padding inside the card container */
 
