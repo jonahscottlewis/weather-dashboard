@@ -147,6 +147,7 @@ function setCity() {
   var citySearch = document.getElementById('city-search').value;
   savedSearches.push(citySearch);
   localStorage.setItem('search-history', JSON.stringify(savedSearches));
+  displayHistory()
 }
 
 function displayHistory() {
