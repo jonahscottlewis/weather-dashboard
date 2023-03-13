@@ -2,6 +2,7 @@ var fetchButton = document.getElementById('form');
 var searchList = document.getElementById('last-five');
 var savedSearches = JSON.parse(localStorage.getItem('search-history')) || [];
 var newDate = dayjs().format('MMMM D, YYYY');
+var searchBox = document.getElementById('city-search');
 
 // requesting URL for current day because 5 day forecast starts 1 day forward
 function getCurrentWeatherApi(e) {
@@ -142,13 +143,22 @@ function getApi(e) {
     });
 };
 
+function clearInput(){
+  var searchBox = document.getElementById('city-search');
+  if (searchBox.value !=""){
+    searchBox.value = "";
+  }
+};
+
 function setCity() {
   //Get the value of the city search field
   var citySearch = document.getElementById('city-search').value;
   savedSearches.push(citySearch);
   localStorage.setItem('search-history', JSON.stringify(savedSearches));
   displayHistory()
+  clearInput()
 }
+
 
 function displayHistory() {
   searchList.innerHTML = "";
@@ -169,11 +179,13 @@ function displayHistory() {
 
 // event listener for clicking the fetchButton to respond to click to get API
 fetchButton.addEventListener('submit', getApi);
-
+// searchBox.addEventListener('submit',setCity()).value = "";
 // Event liatener to submit form when enter key pressed
 fetchButton.addEventListener('submit', getCurrentWeatherApi);
 fetchButton.addEventListener('keyup', function (e) {
   e.preventDefault()
   if (e.key === 'Enter') {
+    setCity()
+    
   }
 })
